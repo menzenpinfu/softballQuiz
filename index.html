@@ -476,6 +476,8 @@ function fb(ok,exp){
 function nextQ(){cur++;if(cur<QN)render();else result();}
 function result(){
   show('result-screen');document.getElementById('score-num').textContent=sc;
+  const GAS_URL='https://script.google.com/macros/s/AKfycbzDcpuXxhq7VAROtJR_ZaFpSZ840PnYJaOkIwp6zLTskkubmbT2ivx0RulxS3xelpo__Q/exec';
+  fetch(GAS_URL+'?type=quiz&score='+sc+'&total='+QN+'&date='+new Date().toISOString()).catch(()=>{});
   const p=sc/QN;
   setTimeout(()=>{document.getElementById('score-circle').style.transition='stroke-dashoffset 1s ease';document.getElementById('score-circle').style.strokeDashoffset=389.56*(1-p);},100);
   let t,c;
